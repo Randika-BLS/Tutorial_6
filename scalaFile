@@ -1,0 +1,50 @@
+package tutorial06
+
+import sun.security.util.Length
+
+object q {
+  def main(args: Array[String]) {
+    //val s = scala.io.StdIn.readChar();
+    //println(s.toInt);
+    //val i = scala.io.StdIn.readInt();
+    //println(i.toChar);
+    val x="THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG";
+    println(encryption(x, 23));
+    //for(i <- x) {
+      //println(i);
+    //}
+  }
+  
+  def encryption(str: String,key: Int): String = {
+    val len=str.length();
+    var new_arr= new Array[Char](len);
+    var count=0;
+    for(c <- str) {
+      val c_to_int = c.toInt;
+      //println(c_to_int);
+      //println(c);
+      if(65<=c_to_int && c_to_int<=90) {
+        var r_char = c_to_int+key;
+        //println(r_char);
+        if(r_char>90) {
+          var f_char=65+(r_char-91);
+          new_arr(count)=f_char.toChar;
+          count+=1;
+          //val str=new_str;
+          //println(a);
+        }
+        else {
+          //println(r_char.toChar);
+          new_arr(count)=r_char.toChar;
+          count+=1
+          //println(b);
+        }
+      }
+      else {
+        new_arr(count)=c_to_int.toChar;
+        count+=1;
+      }
+      //println(new_str);
+    }
+    return new_arr.mkString;
+  }
